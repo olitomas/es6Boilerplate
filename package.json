@@ -17,6 +17,7 @@
     "gulp-livereload": "^3.8.1",
     "gulp-notify": "^2.2.0",
     "gulp-postcss": "^6.1.0",
+    "gulp-server-livereload": "^1.7.0",
     "moment": "^2.11.2"
   },
   "dependencies": {

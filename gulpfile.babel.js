@@ -9,13 +9,21 @@ const less = require('gulp-less');
 const notify = require('gulp-notify');
 const liveReload = require('gulp-livereload');
 const browserify = require('gulp-browserify');
+const server = require('gulp-server-livereload');
+
 
 const onError = function (err) {
     gutil.beep();
     console.log(err);
 };
 
-gulp.task('default', ['scripts', 'less']);
+gulp.task('default', ['scripts', 'less', 'webserver', 'watch']);
+
+gulp.task('watch', function () {
+    liveReload.listen();
+    gulp.watch('src/less/**/*.less', ['less']);
+    gulp.watch('src/js/**/*.js', ['scripts']);
+});
 
 gulp.task('scripts', () =>
     gulp.src('src/**/*.js')
@@ -41,6 +49,21 @@ gulp.task('less', function() {
         .pipe(gulp.dest('static/css/'))
         .pipe(notify('Compiled less (' + moment().format('MMM Do h:mm:ss A') + ')'))
         .pipe(liveReload({
-            auto: false
+            auto: true
         }));
+});
+ 
+gulp.task('webserver', function() {
+  gulp.src('')
+    .pipe(server({
+      livereload: true,
+      directoryListing: true,
+      open: true,
+      defaultFile: 'templates/index.html'
+    }));
+});
+
+gulp.task('clean', function() {
+    del('dist/js/**/*.js');
+    del('static/css/**/*.css');
 });
