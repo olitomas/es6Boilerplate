@@ -19,11 +19,11 @@
     "gulp-notify": "^2.2.0",
     "gulp-postcss": "^6.1.0",
     "gulp-server-livereload": "^1.7.0",
-    "moment": "^2.11.2"
+    "moment": "^2.11.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-sourcemaps": "^1.6.0"
   },
   "dependencies": {
-    "gulp-concat": "^2.6.0",
-    "gulp-sourcemaps": "^1.6.0",
     "jquery": "^2.2.0"
   }
 }

@@ -63,6 +63,14 @@ gulp.task('webserver', function() {
     }));
 });
 
+gulp.task('copyStatic', function() {
+  gulp.src('static/**/*')
+    .pipe(gulp.dest('dist'));
+
+  gulp.src('templates/b2b.html')
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('clean', function() {
     del('dist/js/**/*.js');
     del('static/css/**/*.css');
